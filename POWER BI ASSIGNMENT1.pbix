@@ -1,0 +1,30 @@
+// Example of integrating Python script for advanced analytics
+EVALUATE
+VAR PythonScript = "
+import pandas as pd
+import numpy as np
+
+
+result = # Calculate your result using Python
+
+result
+
+VAR Result = Python.Execute(PythonScript)
+RETURN
+Result
+// Example of querying data from an external system using Web connector
+let
+    Source = Web.Contents("https://api.example.com/data"),
+    JsonData = Json.Document(Source),
+    Table = Table.FromList(JsonData, Splitter.SplitByNothing())
+in
+    Table
+// Example of defining row-level security based on roles
+[Sales Amount] =
+IF (
+    USERPRINCIPALNAME() = "sales@example.com",
+    [Total Sales],
+    BLANK()
+)
+
+
